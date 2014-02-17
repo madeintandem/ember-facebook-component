@@ -4,9 +4,9 @@ FacebookAuthenticatable = Ember.Mixin.create({
   },
 
   facebookAuthorize: function(successCallback) {
-    $.post("api/v1/session|authorization|etc", {
+    $.post("api/v1/authorizations", {
       facebook_id: this.get("facebookId"), facebook_token: this.get("facebookToken"), source: "facebook"
-    }, successCallback);
+    }).then(this.processServerResponse).then(successCallback);
   },
 
   facebookAuthenticate: function(authResponse) {
