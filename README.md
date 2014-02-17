@@ -3,11 +3,11 @@ ember-facebook-component
 
 This repository provides the tools necessary to drop in an Ember component which handles client side authentication with the [Facebook SDK for Javascript](https://developers.facebook.com/docs/facebook-login/login-flow-for-web).  It then uses token based authentication along with Ember Data to communicate with a RESTful API.
 
-# App.AuthManager
+## App.AuthManager
 
-An example `AuthManager` class is provided here, but the `FacebookAuthenticatable` mixin is all that's required for interaction with the Facebook component.
+An example `AuthManager` class is provided [here](https://github.com/devmynd/ember-facebook-component/blob/master/assets/javascript/config/auth_manager.js), but the `FacebookAuthenticatable` mixin is all that's required for interaction with the Facebook component.
 
-# Facebook Authenticatable
+## Facebook Authenticatable
 
 To be used with the Facebook login component, your `AuthManager` implementation must include the `FacebookAuthenticatable` mixin.  The component itself depends on the following four methods: 
 
@@ -35,7 +35,7 @@ This should create a new session on the server and return a valid token response
     user: <valid user id>  }}
 ```
 
-# Usage
+## Usage
 
 There is currently no one file to include.  You will need to drop in the following pieces when setting up your Ember application.
 
@@ -77,7 +77,7 @@ There is currently no one file to include.  You will need to drop in the followi
 	App.facebookAppId = <your facebook app id>;
 	```
 
-4.  Make sure the facebook login component template can be found via `Ember.TEMPLATES["components/facebook-login"]`.  Once available, usage in templates is as follows: 
+4.  Make sure the [facebook login component template](https://github.com/devmynd/ember-facebook-component/blob/master/assets/javascript/templates/components/facebook-login.hbs) can be found via `Ember.TEMPLATES["components/facebook-login"]`.  Once available, usage in templates is as follows: 
 
 	```
 	{{facebook-login action="facebookSignIn"}}
@@ -93,9 +93,14 @@ There is currently no one file to include.  You will need to drop in the followi
 	}
 ```
 
-# API Validation
+## API Validation
 
 It's still recommended to check the validity of the user's facebook credentials prior to authorizing API access.  See [Facebook Access Token docs](https://developers.facebook.com/docs/facebook-login/access-tokens) for more information.
+
+## Depedencies (other than Ember and Ember.Data)
+
+- [Cookies.js](https://gist.github.com/spra85/9056115) - using `Cookies.set` & `Cookies.get` to manage storage and retrieval of cookies
+- [Underscore.js](http://underscorejs.org/) - using underscore's `bindAll` method
 
 ## Contributing
 
